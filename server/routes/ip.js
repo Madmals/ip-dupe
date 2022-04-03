@@ -4,7 +4,7 @@ import ip from '../model/model.js'
 const router = express.Router()
 
 
-router.get('/allIp',(req,res)=>{
+router.get('/',(req,res)=>{
 	ip.find((err,data)=>{
 		if(err){
 			return next(err)
@@ -16,8 +16,9 @@ router.get('/allIp',(req,res)=>{
 
 
 
-router.post('/newIp',(req,res,next)=>{
-	ip.create((err,data)=>{
+router.post('/createip',(req,res,next)=>{
+	console.log(req.body)
+	ip.create(req.body,(err,data)=>{
 		if(err){
 			return next(err)
 		}else{

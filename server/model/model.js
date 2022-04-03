@@ -5,7 +5,7 @@ export const ipSchema = new mongoose.Schema({
 	ip: {
 		//this is to put required in ip
 		type: String,
-		required: true
+		required: true,
 	},
 	createdAt: {
 		type: Date,
