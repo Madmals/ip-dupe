@@ -12,6 +12,10 @@ export const ipSchema = new mongoose.Schema({
 		immutable: true,//cant change
 		default: () => Date.now()
 	},
+	bool:{
+		type:Boolean,
+		default:false
+	}
 })
 
 export const ip = mongoose.model('ip', ipSchema)
