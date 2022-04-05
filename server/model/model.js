@@ -18,7 +18,7 @@ export const ipSchema = new mongoose.Schema({
 	}
 })
 
-export const ip = mongoose.model('ip', ipSchema)
+export const db = mongoose.model('ip', ipSchema)
 
 
-export default ip
+export default db

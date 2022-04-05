@@ -1,12 +1,11 @@
 import express from 'express'
-import mongoose from 'mongoose'
-import ip from '../model/model.js'
+import db from '../model/model.js'
 
 const router = express.Router()
 
 
 router.get('/', (req, res) => {
-	ip.find((err, data) => {
+	db.find((err, data) => {
 		if (err) {
 			return next(err)
 		} else {
@@ -16,10 +15,29 @@ router.get('/', (req, res) => {
 })
 
 
+router.get('/fetchState', (req, res) => {
+	db.find({bool:true},(err, data) => {
+		if (err) {
+			return next(err)
+		} else {
+			res.json(data)
+		}
+	})
+})
+
+router.post('/keepTrue', (req, res) => {
+	db.updateMany(req.body,{bool:false},(err, data) => {
+		if (err) {
+			return next(err)
+		} else {
+			res.json(data)
+		}
+	})
+})
 
 router.post('/createip', (req, res, next) => {
-	
-	ip.findOneAndUpdate(req.body,{bool:true},(err, data,next) => {
+
+	db.findOneAndUpdate(req.body,{bool:true},(err, data,next) => {
 		if (err) {
 			return next(err)
 		} else if (data) {
