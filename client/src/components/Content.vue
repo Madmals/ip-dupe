@@ -1,5 +1,5 @@
 <template>
-  <div class="flex justify-center mt-20">
+  <div class="flex justify-center mt-20 gap-3">
     <div
       class="h-[8vh] w-[20vw] bg-white text-black flex justify-center items-center"
     >
@@ -8,11 +8,16 @@
     <div class="h-[15vh] flex flex-col">
       <div v-if="checker === true">
         <iframe
-          src="https://giphy.com/embed/j4fbBhYgu8mNEHkQ4w"
+          src="https://giphy.com/embed/ZyGTx7DbVmHDy"
+          width="480"
+          height="230"
           frameBorder="0"
           class="giphy-embed"
           allowFullScreen
         ></iframe>
+        <p>
+          <a class="w-[20vw]" href="https://giphy.com/gifs/clone-ZyGTx7DbVmHDy"></a>
+        </p>
         <p>
           <a
             href="https://giphy.com/gifs/among-us-imposter-impostor-j4fbBhYgu8mNEHkQ4w"
@@ -68,13 +73,12 @@ async function getState() {
       checker.value = res.data[0].bool;
     }
   } catch (err) {
-    console.error(error);
+    console.log(err);
   }
 }
 
 onMounted(() => {
-  fetchData()
-
+  fetchData();
   getState();
 });
 </script>

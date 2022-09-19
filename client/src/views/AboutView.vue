@@ -1,6 +1,6 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="about w-100 bg-blue text-center">
+    <h1>Simple ipchecker</h1>
   </div>
 </template>
 

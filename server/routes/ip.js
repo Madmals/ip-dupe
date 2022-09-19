@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
 
 
 router.get('/fetchState', (req, res) => {
-	db.find({bool:true},(err, data) => {
+	db.find({bool:true},(err, data,next) => {
 		if (err) {
 			return next(err)
 		} else {
@@ -26,7 +26,7 @@ router.get('/fetchState', (req, res) => {
 })
 
 router.post('/keepTrue', (req, res) => {
-	db.updateMany(req.body,{bool:false},(err, data) => {
+	db.updateMany(req.body,{bool:false},(err, data,next) => {
 		if (err) {
 			return next(err)
 		} else {
@@ -35,7 +35,7 @@ router.post('/keepTrue', (req, res) => {
 	})
 })
 
-router.post('/createip', (req, res, next) => {
+router.post('/createip', (req, res) => {
 
 	db.findOneAndUpdate(req.body,{bool:true},(err, data,next) => {
 		if (err) {
@@ -43,8 +43,7 @@ router.post('/createip', (req, res, next) => {
 		} else if (data) {
 			console.log('this already saved')
 		} else {
-
-			ip.create(req.body, (err, data) => {
+			db.create(req.body, (err, data,next) => {
 				if (err) {
 					return next(err)
 				} else {
