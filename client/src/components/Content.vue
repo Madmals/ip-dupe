@@ -16,7 +16,10 @@
           allowFullScreen
         ></iframe>
         <p>
-          <a class="w-[20vw]" href="https://giphy.com/gifs/clone-ZyGTx7DbVmHDy"></a>
+          <a
+            class="w-[20vw]"
+            href="https://giphy.com/gifs/clone-ZyGTx7DbVmHDy"
+          ></a>
         </p>
         <p>
           <a
@@ -48,7 +51,7 @@ const info = ref("");
 const checker = ref(false);
 
 async function fetchData() {
-  await axios.post("http://localhost:5000/api/keepTrue", { bool: true });
+  await axios.post("https://ipdupe.onrender.com/api/keepTrue", { bool: true });
   const post = await fetch("https://api.bigdatacloud.net/data/client-ip");
 
   info.value = await post.json();
@@ -60,13 +63,13 @@ async function fetchData() {
 }
 
 async function submitIp() {
-  let apiUrl = "http://localhost:5000/api/createip";
+  let apiUrl = "https://ipdupe.onrender.com/api/createip";
 
   await axios.post(apiUrl, { ip: info.value.ipString });
 }
 
 async function getState() {
-  const apiUrl = "http://localhost:5000/api/fetchState";
+  const apiUrl = "https://ipdupe.onrender.com/api/fetchState";
   try {
     const res = await axios.get(apiUrl);
     if (res.data[0].bool) {
